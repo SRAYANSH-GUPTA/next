@@ -1,7 +1,7 @@
 import { createSlice, nanoid } from '@reduxjs/toolkit'
 
 const initialState = {
-    users: []
+    users: JSON.parse(localStorage.getItem("users")) ? JSON.parse(localStorage.getItem("users")) : []
 }
 
 
@@ -16,6 +16,7 @@ const slice = createSlice({
                 name:action.payload
             }
             state.users=[...state.users,data];
+            localStorage.setItem("users",JSON.stringify(state.users));
             console.log("state of users")
             console.log(state.users);
         },

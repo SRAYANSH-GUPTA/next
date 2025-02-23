@@ -8,11 +8,20 @@ interface User {
 }
 
 interface RootState {
-    users: User[]
+    users: [
+        {
+            id:1,
+            name:"John"
+        },
+        {
+            id:2,
+            name:"Jane"
+        }
+    ]
 }
 
 export default function DisplayUsers() {
-    const userData = useSelector((state: RootState) => state.users);
+    const userData = useSelector((state: any) => state.userdata.users);
     const dispatch = useDispatch();
     const removeUserDispatch = (name:String)=>{
         dispatch(removeUser(name));
@@ -20,7 +29,7 @@ export default function DisplayUsers() {
     return <div>
         <h1>Users</h1>
         <ul>
-            {userData.map(user => (
+            {userData?.map((user:any) => (
                 <li key={user.id}>{user.name} <button onClick={()=> removeUserDispatch(user.name)}>Remove</button></li>
             ))}
         </ul>
