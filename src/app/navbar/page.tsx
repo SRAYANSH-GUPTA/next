@@ -1,17 +1,16 @@
 import React from "react";
 
 import Link from "next/link";
+import AddUsers from "../components/addusers";
+import DisplayUsers from "../components/displayusers";
 
 const Navbar = () => 
 {
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link href="/">Home</Link>
-                </li>
-            </ul>
-        </nav>
+      <div>
+        <AddUsers/>
+        <DisplayUsers/>
+      </div>
     )
 }
 
