@@ -18,10 +18,20 @@ const slice = createSlice({
             state.users=[...state.users,data];
             console.log("state of users")
             console.log(state.users);
+        },
+        removeUser:(state,action)=>{
+            const data = state.users.filter((item)=>item.name !== action.payload);
+            console.log(action.payload);
+            console.log("Payload Above!!!!!!!!!!!");
+            state.users = data;
+            console.log("state of users")
+            console.log(state.users);
         }
+    
         
     }
 })
 export const {addUser} = slice.actions;
+export const {removeUser} = slice.actions;
 export default slice.reducer;
 
