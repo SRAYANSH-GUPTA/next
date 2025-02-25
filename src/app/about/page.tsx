@@ -25,8 +25,12 @@ interface Product {
 }
 
 const About = () => {
-    const userData = useSelector((state: RootState) => state.users);
+    const userData = useSelector((state: any) => state.userdata.users);
+    
+    const dispatch = useDispatch();
+    console.log(userData);
     const [time, setTime] = useState('');
+    const [user,setUser] = useState<User[]>([]);
 
     useEffect(() => {
         
@@ -47,7 +51,7 @@ const About = () => {
                     users
                 </h1>
                 <h2>
-                    {userData.map((val: User) => <li key={val.id}>{val.name}</li>)}
+                    {userData.map((val: any) => <li key={val.id}>{val.name}</li>)}
                 </h2>
             </div>
             <h1>About</h1>
@@ -66,15 +70,16 @@ const About = () => {
                    
                     </tr>
                     </thead>
-                    {/* <tbody>
-                        {value.map(value => <tr key={value.id} >
+                    <tbody>
+                        {userData.map((value: any)   => <tr key={value.id} >
                             <td>{value.title}</td>
                         <td>{value.completed.toString()}</td>
 
                        
                         </tr>)}
-                    </tbody> */}
+                    </tbody>
             </table>
+            
             <ProductCard />
         </div>
     );
